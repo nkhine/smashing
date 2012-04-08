@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VisualFrames_Bestsellers>
+            <version>0.1.0</version>
+        </VisualFrames_Bestsellers>
+    </modules>
+    <global>
+        <resources>
+            <bestsellers_setup>
+                <setup>
+                    <module>VisualFrames_Bestsellers</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </bestsellers_setup>
+            <bestsellers_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </bestsellers_write>
+            <bestsellers_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </bestsellers_read>
+        </resources>
+        <blocks>
+			<catalog>
+			   <rewrite>
+					<product_bestsellers>VisualFrames_Bestsellers_Block_Product_Bestsellers</product_bestsellers>
+			   </rewrite>
+			</catalog>
+        </blocks>
+    </global>
+</config>

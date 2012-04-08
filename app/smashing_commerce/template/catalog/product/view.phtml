@@ -1,0 +1,179 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop">
+            <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </div>
+		   <div>
+           <span class="items_text">Item # </span>
+           <span class="items_sku"><?php echo $_product->getSku(); ?></span>
+           </div>
+
+   
+
+            <?php echo $this->getChildHtml('alert_urls') ?>
+		<?php if($_product->isSaleable()): ?>
+			<p class="availability"><?php echo $this->__('Availability:') ?><span>
+			<?php echo $this->__('In stock') ?></span></p>
+			<?php else: ?>
+				<p class="availability"><?php echo $this->__('Availability: Out of stock') ?></p>
+			<?php endif; ?>	
+			<div class="product-divider"></div>
+				
+            <?php if ($_product->getShortDescription()):?>
+                <h4 class="product_sub_heading"><?php echo $this->__('Quick Overview') ?></h4>
+                <div class="short-description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+            <?php endif;?>
+			
+            <?php echo $this->getChildHtml('other');?>
+ 			<?php if ($_product->isSaleable() && $this->hasOptions()):?>					
+            <?php echo $this->getChildChildHtml('container1', '', true, true) ?>			
+            <?php endif;?>    
+            
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php echo $this->getTierPriceHtml() ?>
+
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                        <div class="clear"></div>
+                        <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+            <?php else:?>
+                <?php echo $this->getChildHtml('addto') ?>
+            <?php endif; ?>
+			 <?php if ($this->canEmailToFriend()): ?>
+                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+            <?php endif; ?>
+			
+			<?php echo $this->getReviewsSummaryHtml($_product, "short", true)?>	
+            
+            <div class="addthis"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('addthis')->toHtml() ?></div>
+
+
+        </div>
+
+        <div class="product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+
+        <div class="clear"></div>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+        <?php endif;?>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(){
+                    if (this.validator.validate()) {
+                            this.form.submit();
+                    }
+            }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+	
+	<div id="countrytabs">
+		<?php if($_product->getDescription()):?>
+		<div class="tab_link-black"><a rel="country1" href="#">item Details</a></div>
+		<?endif?>
+		<div class="tab_link"><a rel="country2" href="#">Related Products</a></div>
+		<div class="tab_link-last"><a rel="country3" href="#">Reviews</a></div>
+	</div>
+    
+	<div id="country1" class="product-collateral">
+	<?php if ($_description = $this->getChildHtml('description')):?>
+	<?php echo $_description ?>
+	<?php endif;?>
+    <?php if ($_additional = $this->getChildHtml('additional')):?>
+	<div class="collateral-box">
+	<?php echo $_additional ?>
+	</div>
+	<?php endif;?>
+	</div>
+    <div class="clear"></div>
+	
+	
+	
+	
+	<div id="country2" class="product-collateral" style="clear:both;">
+	<?php echo $this->getChildHtml('related_products') ?>
+	</div>
+    <div class="clear"></div>
+	
+	
+	
+	
+	
+	<div id="country3" class="product-collateral" style="clear:both;">
+	<?php echo $this->getChildHtml('review-product') ?>
+	</div>
+	<div class="clear"></div>
+	
+	
+	<script type="text/javascript">
+	var countries=new ddtabcontent("countrytabs")
+	countries.setpersist(true)
+	countries.setselectedClassTarget("link") //"link" or "linkparent"
+	countries.init()
+	</script>
+    
+	
+	<div class="product-collateral">
+       
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+    </div>
+</div>

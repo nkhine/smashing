@@ -1,0 +1,40 @@
+
+<div class="menu_heading">
+<div class="block-title">
+<strong>product categories</strong>
+</div>
+</div>
+<div class="vert-nav-content" style="padding-top:0px;">
+<ul id="nav_vert" class="left_nav">
+<?php foreach ($this->getStoreCategories() as $_category): ?>
+<?php $cateactive = $_category->getIsActive(); ?>
+<?php if($cateactive == 1) { ?>
+	<li class="level0" onmouseover="toggleMenu(this,1)" onmouseout="toggleMenu(this,0)">
+	<a href="<?=$this->getCategoryUrl($_category);?>"><?=$_category->getName();?></a>
+	</li>
+<?php } ?>
+<?php endforeach ?>
+</ul>
+<div class="clear"></div>
+    </div>
+    <?php echo $this->getChildHtml('topLeftLinks') ?>
+ 
+<div class="side_bottom_bg"></div>
+
+<div class="menu_heading">
+<div class="block-title">
+<strong>our support</strong>
+</div>
+</div>
+<div class="vert-nav-content" style="padding-top:0px;">
+<ul id="nav_vert" vert-nav-content">
+<li><a href="<?php echo $this->getUrl('about-us') ?>" title="About Us">About Us</a></li>
+<li><a href="<?php echo $this->getUrl('contacts') ?>" title="Contact Us">Contact Us</a></li>
+<li><a href="<?php echo $this->getUrl('testimonials') ?>" title="Testimonials">Testimonials</a></li>
+<li><a href="<?php echo $this->getUrl('faq') ?>" title="FAQ">FAQ</a></li>
+</ul>
+</div>
+
+
+<div class="side_bottom_bg"></div>
+<div class="clear"></div>

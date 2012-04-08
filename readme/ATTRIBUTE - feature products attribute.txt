@@ -1,0 +1,53 @@
+THIS ATTRIBUTE IS NEEDED FOR THE FEATURED PRODUCT MODULE.
+
+
+Create a new attribute by going to Catalog > Attributes > Manage Attributes > Add New Attribute.
+
+Attribute Properties
+
+
+      Attribute Code : featured
+
+      Scope: Store View
+
+      Catalog Input Type for Store Owner: Yes/No
+
+      Default value: No
+
+      Unique Value : No
+
+      Values Required: No
+
+      Input Validation for Store Owner: None
+
+      Apply To: All Product Types
+
+Front End Properties
+
+
+      Use in quick search: No
+
+      Use in advanced search: Yes
+
+      Comparable on Front-end: No
+
+      Use In Layered Navigation : No
+
+      Use In Search Results Layered Navigation : No
+
+      Use for Price Rule Conditions : NO
+
+      Visible on Product View Page on Front-end: No
+
+      Used in product listing :No
+
+      Used for sorting in product listing : No
+
+Manage Label/Options
+
+
+      Admin: Featured Product
+
+      English: Featured Product
+
+Save the new attribute and go to Catalog -> Attributes -> Manage Attributes Sets to add the attribute to the default feature set.

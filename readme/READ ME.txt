@@ -1,0 +1,23 @@
+Thank you for downloading our theme.
+1. THEME INSTALLATION The theme files should be setup in the following locations relative to your Magento folder:app/design/frontend/default/themeName
+and 
+skin/frontend/default/themeName
+Please follow these instructions to proceed with the installation of your theme:http://ecommerce-themes.com/support/instructions
+
+2. LOGO CONFIGURATION to change the logo, go to your admin panel under:
+System->Configuration->Design->
+In Header Tab
+Logo Image Src - images/logo.gif
+
+We look forward to your feedback through product reviews and ratings in our store.
+
+If you need further customization or custom designs we would be happy to help as well. Come back to our website every week as we will be releasing more themes on a weekly basis.
+
+Get your Magento Optimized Hosting with Free Magento installation and free theme installation NOW!
+Checkout our Magento Optimized Containers at
+http://gentohosting.com/container/Magento_Optimized_Container_Plans.html
+Use coupon code: 25OFFSPECIAL to get an instant 25% OFF any Magento Hosting Plans.
+
+Thanks,
+
+eCommerce-Themes.com

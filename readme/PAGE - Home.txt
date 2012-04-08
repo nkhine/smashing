@@ -1,0 +1,118 @@
+USE THE FOLLOWING INSTRUCTIONS TO CREATE THIS PAGE:
+
+From your Magento admin panel, go to CMS -> Pages -> Add New Page
+
+
+1. GENERAL INFORMATION TAB
+
+Page Title -> Home
+
+URL Key -> home
+
+Store View -> < Select the relevant store view(s) >
+
+Status -> enabled
+
+
+
+2. CONTENT TAB:
+Copy and paste the code below in the content text area.
+
+
+----- START COPYING THE CODE BELOW THIS LINE -----
+
+<div>
+<div class="banner">
+<div class="super_summer_text">Super Summer Sale this month!</div>
+<div class="up_to_text">up to 50% off on selected items! hurry shop now!</div>
+</div>
+{{block type="catalog/product_bestsellers" name="home.catalog.product.bestsellers" alias="product_bestsellers" template="catalog/product/bestsellers.phtml"}}
+{{block type="catalog/product_new" name="home.catalog.product.new" alias="product_homepage" template="catalog/product/new.phtml"}}
+{{block type="catalog/product_featured" name="home.catalog.product.featured" alias="product_featured" template="catalog/product/featured.phtml"}}
+</div>
+----- END COPYING THE CODE ABOVE THIS LINE -----
+
+
+
+3. CUSTOM DESIGN TAB
+
+Under Page Layout section
+
+Layout -> 1 column
+
+
+Old home page
+<div class="slider-wrapper theme-default">
+<div id="slider" class="nivoSlider"><img src="/skin/frontend/default/qsn/images/banner/1-category.jpg" alt="" /> <img src="/skin/frontend/default/qsn/images/banner/2-category.jpg" alt="" /></div>
+</div>
+<script src="/skin/frontend/default/qsn/js/jquery/addons/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+<script type="text/javascript">// <![CDATA[
+    $j(window).load(function() {
+        $j('#slider').nivoSlider({
+			effect:'boxRain', // Specify sets like: 'fold,fade,sliceDown'
+			slices:1, // For slice animations
+			boxCols: 1, // For box animations
+			boxRows: 1, // For box animations
+			animSpeed:500, // Slide transition speed
+			pauseTime:5000, // How long each slide will show
+			startSlide:0, // Set starting Slide (0 index)
+			directionNav:true, // Next & Prev navigation
+			directionNavHide:false, // Only show on hover
+			keyboardNav:true, // Use left & right arrows
+			pauseOnHover:true, // Stop animation while hovering
+			manualAdvance:false, // Force manual transitions
+			captionOpacity:0.8, // Universal caption opacity
+			prevText: 'Prev', // Prev directionNav text
+			nextText: 'Next' // Next directionNav text
+		});
+    });
+// ]]></script>
+<script type="text/javascript">// <![CDATA[
+        $j(function() {
+          $j('#homepage-tabs').tabs();
+        });
+// ]]></script>
+
+
+<div id="homepage-tabs">
+<ul>
+<li><a href="#featured-products"><span>Featured Products</span></a></li>
+<li><a href="#best-sellers"><span>Best Sellers</span></a></li>
+<li><a href="#most-searched-for"><span>Most Searched For</span></a></li>
+<li><a href="#special-offers"><span>Special Offers</span></a></li>
+<li><a href="#reviews"><span>Reviews</span></a></li>
+</ul>
+<div id="featured-products">{{block type="catalog/product_list" category_id="14" template="catalog/product/featured.phtml"}}</div>
+<div id="best-sellers">{{block type="catalog/product_list" category_id="15" template="catalog/product/featured.phtml"}}</div>
+<div id="most-searched-for">{{block type="catalog/product_list" category_id="16" template="catalog/product/featured.phtml"}}</div>
+<div id="special-offers">{{block type="catalog/product_list" category_id="17" template="catalog/product/featured.phtml"}}</div>
+<div id="reviews">{reviews}</div>
+</div>
+<div id="above-footer">we put the FAQ, What's Happening and Specials here</div>
+
+
+
+	<div id="countrytabs">
+		<div class="tab_link-black"><a rel="country1" href="#">item Details</a></div>
+		<div class="tab_link"><a rel="country2" href="#">Related Products</a></div>
+		<div class="tab_link-last"><a rel="country3" href="#">Reviews</a></div>
+	</div>
+    
+	<div id="country1" class="product-collateral">
+	 dd
+	</div>
+        <div class="clear"></div>
+	<div id="country2" class="product-collateral" style="clear:both;">
+	 ddd
+	</div>
+        <div class="clear"></div>
+	<div id="country3" class="product-collateral" style="clear:both;">
+	 ddd
+	</div>
+	<div class="clear"></div>
+	<script type="text/javascript">// <![CDATA[
+        var countries=new ddtabcontent("countrytabs")
+	countries.setpersist(true)
+	countries.setselectedClassTarget("link") //"link" or "linkparent"
+	countries.init()
+        // ]]></script>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VisualFrames_Bestsellers>
+            <active>true</active>
+            <codePool>local</codePool>
+        </VisualFrames_Bestsellers>
+    </modules>
+</config> 
